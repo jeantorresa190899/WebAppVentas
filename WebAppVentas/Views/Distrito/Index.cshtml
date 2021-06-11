@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebAppVentas.Models.TbDistrito>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<body>
+    <a asp-action="Create">Nuevo Distrito</a>
+    <h1 class="display-3">Listado de Distritos</h1>
+    <h4>
+        Buscar<input class="form-control" id="myInput" type="text" placeholder="Search..."/>
+        <br />
+    </h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td scope="col">Codigo</td>
+                <td scope="col">Nombre Distrito</td>
+                <td scope="col">Eliminar</td>
+                <td scope="col">Editar</td>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.CodDis</td>
+                <td>@item.NomDis</td>
+                <td><a asp-action="Delete" asp-route-id="@item.CodDis">Delete</a></td>
+                <td><a asp-action="Edit" asp-route-id="@item.CodDis">Edit</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</body>
+
+<script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+</script>
+
