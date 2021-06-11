@@ -29,13 +29,20 @@ namespace WebAppVentas.Models.Repository
             return obj;
         }
 
-        public void EditDetails(TbDistrito tbDistrito)
+        public void EditDetails(TbDistrito distrito)
         {
-            var obj = (from d in db.TbDistritos
-                       where d.CodDis == tbDistrito.CodDis
-                       select d).FirstOrDefault();
-            obj.NomDis = tbDistrito.NomDis;
-            db.SaveChanges();
+            try
+            {
+                var obj = (from d in db.TbDistritos
+                           where d.CodDis == distrito.CodDis
+                           select d).FirstOrDefault();
+                obj.NomDis = distrito.NomDis;
+                db.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                Console.Write(e.Message);
+            }
         }
 
         public IEnumerable<TbDistrito> GetAllDistritos()
