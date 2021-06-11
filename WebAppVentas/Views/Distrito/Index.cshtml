@@ -7,10 +7,10 @@
 }
 
 <body>
-    <a asp-action="Create">Nuevo Distrito</a>
+    <h1><a asp-action="Create">Nuevo Distrito</a></h1>
     <h1 class="display-3">Listado de Distritos</h1>
     <h4>
-        Buscar<input class="form-control" id="myInput" type="text" placeholder="Search..."/>
+        Buscar<input class="form-control" id="myInput" type="text" placeholder="Search..." />
         <br />
     </h4>
     <table class="table table-hover">
@@ -25,12 +25,12 @@
         <tbody id="myTable">
             @foreach (var item in Model)
             {
-            <tr>
-                <td>@item.CodDis</td>
-                <td>@item.NomDis</td>
-                <td><a asp-action="Delete" asp-route-id="@item.CodDis">Delete</a></td>
-                <td><a asp-action="Edit" asp-route-id="@item.CodDis">Edit</a></td>
-            </tr>
+                <tr>
+                    <td>@item.CodDis</td>
+                    <td>@item.NomDis</td>
+                    <td><a asp-action="Delete" asp-route-id="@item.CodDis">Delete</a></td>
+                    <td><a asp-action="Edit" asp-route-id="@item.CodDis">Edit</a></td>
+                </tr>
             }
         </tbody>
     </table>
